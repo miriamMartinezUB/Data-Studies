@@ -1,13 +1,13 @@
 import React from 'react'
-import TextArea from "./TextArea";
+import DataStudiesTextArea from "./DataStudiesTextArea";
 
 export default {
-    title: "TextArea",
-    component: TextArea
+    title: "DataStudiesTextArea",
+    component: DataStudiesTextArea
 }
 
 export const TextAreaWithAllArgs = () => (
-    <TextArea
+    <DataStudiesTextArea
         defaultMessage={"Write here"}
         minRowSize={10}
         maxChars={100}

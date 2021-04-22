@@ -11,7 +11,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types'
 
-const Modal = ({title, description, children, textButton}) => {
+const DataStudiesDialog = ({title, description, children, textButton}) => {
     const [open, setOpen] = React.useState(true); //TODO change to false when put in button
     const [maxWidth, setMaxWidth] = React.useState('sm');
 
@@ -68,12 +68,12 @@ const Modal = ({title, description, children, textButton}) => {
     //TODO change to own button
 }
 
-Modal.propTypes = {
+DataStudiesDialog.propTypes = {
     title: PropTypes.string.isRequired,
     textButton: PropTypes.string.isRequired,
     description: PropTypes.string,
     children: PropTypes.node,
 }
 
-export default Modal
+export default DataStudiesDialog
 
