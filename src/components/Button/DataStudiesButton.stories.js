@@ -1,7 +1,7 @@
 import React from 'react'
 import DataStudiesButton from "./DataStudiesButton";
 
-export default {
+/*export default {
     title: "DataStudiesButton",
     component: DataStudiesButton
     //Creates specific parameters for the story
@@ -14,19 +14,35 @@ export default {
         ],
       },
     },
-};
+}*/
+export default {
+    title: "DataStudiesButton",
+    component: DataStudiesButton
+}
 
-export const Primary = () => <DataStudiesButton1 background="#ff0" label="PrimaryButton" />;
-export const Secondary = () => <DataStudiesButton2 background="#0f0" label="SecondaryButton" />;
-export const Tertiary = () => <DataStudiesButton3 background="#00f" label="TertiaryButton" />;
-
-/*
 export const ButtonWithAllArgs = () => (
+    <DataStudiesButton
+        variant={"contained"}
+        color={"primary"}
+        size={"small"}
+        background={"#a0f"}
+        label={"Button"}
+    />
+)
+/*export const ButtonWithAllArgs = () => (
+    <DataStudiesButton
+        background={"#ff0"}
+        label={"PrimaryButton"}
+    />
+)*/
+/*export const Primary = () => <DataStudiesButton1 background="#ff0" label="PrimaryButton" />;
+export const Secondary = () => <DataStudiesButton2 background="#0f0" label="SecondaryButton" />;
+export const Tertiary = () => <DataStudiesButton3 background="#00f" label="TertiaryButton" />;*/
+
+/*export const ButtonWithAllArgs = () => (
     <DataStudiesButton
         defaultMessage={"Write here"}
         minRowSize={5}
         maxChars={20}
         maxRowSize={50}
-        required={true}/>)
-
-*/
+        required={true}/>)*/

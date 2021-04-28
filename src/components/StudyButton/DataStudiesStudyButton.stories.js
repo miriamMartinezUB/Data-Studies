@@ -6,7 +6,7 @@ export default {
     component: DataStudiesStudyButton
 }
 
-export const ButtonWithAllArgs = () => (
+export const StudyButtonWithAllArgs = () => (
     <DataStudiesStudyButton name={"Study name"}
                        date={"01/01/2021"}
                        description={"Description"}
