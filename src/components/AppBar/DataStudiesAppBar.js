@@ -1,9 +1,10 @@
 import React from 'react';
 import DataStudiesTabs from "../Tabs";
 import PropTypes from 'prop-types';
-import {AppBar, makeStyles} from "@material-ui/core";
-import DataStudiesDialog from "../Dialog";
+import {AppBar, makeStyles, Toolbar} from "@material-ui/core";
 import {COLOR_BLUE} from "../../constants/colors";
+import {nameIcons} from "../../constants/icons";
+import DataStudiesIconButton from "../IconButton";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -12,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
     tab: {
         marginRight: theme.spacing(2),
     },
+    toolbarButtons: {
+        marginLeft: "auto",
+    }
 }));
 
 const DataStudiesAppBar = ({title}) => {
@@ -21,6 +25,9 @@ const DataStudiesAppBar = ({title}) => {
         <div className={classes.root}>
             <AppBar position="static" style={{'background': COLOR_BLUE}}>
                 <DataStudiesTabs title="title"/>
+                <div className={classes.toolbarButtons}>
+                    <DataStudiesIconButton name={nameIcons.USER}/>
+                </div>
             </AppBar>
         </div>
     );
