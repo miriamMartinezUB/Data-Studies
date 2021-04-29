@@ -48,6 +48,7 @@ DataStudiesButton.propTypes = {
     size: PropTypes.string.isRequired,
     background: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
+    onClick: PropTypes.func
 }
 
 export default DataStudiesButton
