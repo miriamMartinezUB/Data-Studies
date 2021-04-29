@@ -5,6 +5,7 @@ import {AppBar, makeStyles, Toolbar} from "@material-ui/core";
 import {COLOR_BLUE} from "../../constants/colors";
 import {nameIcons} from "../../constants/icons";
 import DataStudiesIconButton from "../IconButton";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,12 +24,17 @@ const DataStudiesAppBar = ({title}) => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" style={{'background': COLOR_BLUE}}>
-                <DataStudiesTabs title="title"/>
-                <div className={classes.toolbarButtons}>
-                    <DataStudiesIconButton name={nameIcons.USER}/>
-                </div>
-            </AppBar>
+            <Grid container
+                  justify="center">
+                <AppBar position="static" style={{'background': COLOR_BLUE}}>
+                    <Toolbar variant="dense">
+                        <DataStudiesTabs title="title"/>
+                        <div className={classes.toolbarButtons}>
+                            <DataStudiesIconButton name={nameIcons.USER} color={"white"}/>
+                        </div>
+                    </Toolbar>
+                </AppBar>
+            </Grid>
         </div>
     );
 }

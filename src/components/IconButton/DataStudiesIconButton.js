@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {IconButton} from '@material-ui/core'
 import {iconsByName} from "../../constants/icons";
-import Button from "@material-ui/core/Button";
 
 
 const DataStudiesIconButton = ({name, color, size, background, onClick}) => {
