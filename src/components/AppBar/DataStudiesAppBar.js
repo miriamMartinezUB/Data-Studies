@@ -3,6 +3,7 @@ import DataStudiesTabs from "../Tabs";
 import PropTypes from 'prop-types';
 import {AppBar, makeStyles} from "@material-ui/core";
 import DataStudiesDialog from "../Dialog";
+import {COLOR_BLUE} from "../../constants/colors";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,7 +19,7 @@ const DataStudiesAppBar = ({title}) => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="static" style={{'background': COLOR_BLUE}}>
                 <DataStudiesTabs title="title"/>
             </AppBar>
         </div>

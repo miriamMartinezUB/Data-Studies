@@ -1,5 +1,6 @@
 import React from 'react'
 import DataStudiesButton from "./DataStudiesButton";
+import {COLOR_BLUE} from "../../constants/colors";
 
 /*export default {
     title: "DataStudiesButton",
@@ -20,13 +21,18 @@ export default {
     component: DataStudiesButton
 }
 
+
+
 export const ButtonWithAllArgs = () => (
     <DataStudiesButton
         variant={"contained"}
         color={"primary"}
         size={"small"}
-        background={"#a0f"}
+        background={COLOR_BLUE}
         label={"Button"}
+        onClick={() => {
+            window.location.href='/studies'
+        }}
     />
 )
 /*export const ButtonWithAllArgs = () => (

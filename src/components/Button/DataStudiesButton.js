@@ -26,10 +26,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const DataStudiesButton = ({variant, color, size, background, label}) => {
+const DataStudiesButton = ({variant, color, size, background, label, onClick}) => {
     const classes = useStyles();
     return (
-        <Button variant={variant} color={color} size={size} className={classes.margin} style={{backgroundColor: background}}>
+        <Button
+            variant={variant}
+            color={color}
+            size={size}
+            className={classes.margin}
+            style={{backgroundColor: background}}
+            onClick={onClick}
+        >
             {label}
         </Button>
     )
