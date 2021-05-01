@@ -7,7 +7,7 @@ import DataStudiesIconButton from "../components/IconButton";
 import {nameIcons} from "../constants/icons";
 import 'typeface-roboto'
 
-const NotFoundPage = () => {
+const NotImplementedPage = () => {
     return (
         <Grid container
               direction="column"
@@ -26,7 +26,7 @@ const NotFoundPage = () => {
                           justify="center"
                           alignItems="center">
                         <Typography variant="h4" color="inherit">
-                            404 | La página no existe
+                            501 | Lo sentimos aun no esta implementado
                         </Typography>
                         <Link color="inherit"
                               aria-label="menu"
@@ -42,4 +42,4 @@ const NotFoundPage = () => {
     )
 }
 
-export default NotFoundPage
+export default NotImplementedPage
