@@ -2,24 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Tab, Tabs, Link} from "@material-ui/core";
 
-const DataStudiesTabs = ({title}) => {
-    const tabsProps = {
-        labelTabData: "Data",
-        labelTabStudies: "Studies",
-        linkTabData: "/data",
-        linkTabStudies: "/studies"
-    };
-
+const DataStudiesTabs = ({tabsInfo}) => {
     return (
         <Tabs>
-            <Tab label={tabsProps.labelTabData} href={tabsProps.linkTabData}/>
-            <Tab label={tabsProps.labelTabStudies} href={tabsProps.linkTabStudies}/>
+            {tabsInfo.map(tab => (
+                <Tab label={tab.labelTab} href={tab.linkTab}/>
+            ))}
         </Tabs>
     );
 }
 
 DataStudiesTabs.propTypes = {
-    title: PropTypes.string
+    tabsInfo: PropTypes.any
 }
 
 export default DataStudiesTabs;

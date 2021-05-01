@@ -7,6 +7,21 @@ export default {
     component: DataStudiesTabs
 }
 
+const tabs = [
+    {
+        labelTab: "Documentation",
+        linkTab: "/not/implemented",
+    },
+    {
+        labelTab: "Forms",
+        linkTab: "/forms"
+    },
+    {
+        labelTab: "Add researcher",
+        linkTab: "/not/implemented"
+    }
+];
+
 export const ModalWithAllArgs = () => (
-    <DataStudiesTabs/>
+    <DataStudiesTabs tabsInfo={tabs}/>
 )
