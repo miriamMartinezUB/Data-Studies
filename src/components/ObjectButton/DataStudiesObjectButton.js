@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types'
 
-const DataStudiesStudyButton = ({name, date, description}) => {
+const DataStudiesObjectButton = ({name, date, description}) => {
 
     const studyProps = {
         linkStudy: "/study",
@@ -33,10 +33,10 @@ const DataStudiesStudyButton = ({name, date, description}) => {
     )
 }
 
-DataStudiesStudyButton.propTypes = {
+DataStudiesObjectButton.propTypes = {
     name: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     description: PropTypes.string,
 }
 
-export default DataStudiesStudyButton
+export default DataStudiesObjectButton
