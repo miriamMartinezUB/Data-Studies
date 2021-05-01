@@ -9,12 +9,16 @@ export default {
 
 const tabs = [
     {
-        labelTab: "Data",
-        linkTab: "/data",
+        labelTab: "Documentation",
+        linkTab: "/not/implemented",
     },
     {
-        labelTab: "Studies",
-        linkTab: "/studies"
+        labelTab: "Forms",
+        linkTab: "/forms"
+    },
+    {
+        labelTab: "Add researcher",
+        linkTab: "/not/implemented"
     }
 ];
 
