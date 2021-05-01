@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Tab, Tabs, Link} from "@material-ui/core";
 
-const DataStudiesTabs = ({title}) => {
+const DataStudiesTabs = () => {
     const tabsProps = {
         labelTabData: "Data",
         labelTabStudies: "Studies",
@@ -19,7 +19,6 @@ const DataStudiesTabs = ({title}) => {
 }
 
 DataStudiesTabs.propTypes = {
-    title: PropTypes.string
 }
 
 export default DataStudiesTabs;
