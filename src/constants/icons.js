@@ -1,6 +1,4 @@
 import DeleteIcon from '@material-ui/icons/Delete';
-import AlarmIcon from '@material-ui/icons/Alarm';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import SearchIcon from '@material-ui/icons/Search';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -9,6 +7,7 @@ import PublishIcon from '@material-ui/icons/Publish';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 import PersonOutlinedIcon from '@material-ui/icons/PersonOutlined';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 
 export const nameIcons = {
     DELETE: 'delete',
@@ -19,7 +18,8 @@ export const nameIcons = {
     UPLOAD: 'upload',
     NEW: 'new',
     ADD_USER: 'add_user',
-    USER: 'user'
+    USER: 'user',
+    SAD:'sad'
 }
 
 export const iconsByName = {
@@ -31,5 +31,6 @@ export const iconsByName = {
     upload: <PublishIcon/>,
     new: <AddCircleOutlineIcon/>,
     add_user: <PersonAddOutlinedIcon/>,
-    user: <PersonOutlinedIcon/>
+    user: <PersonOutlinedIcon/>,
+    sad: <SentimentVeryDissatisfiedIcon/>
 }
