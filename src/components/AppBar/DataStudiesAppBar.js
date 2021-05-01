@@ -22,13 +22,24 @@ const useStyles = makeStyles((theme) => ({
 const DataStudiesAppBar = ({title}) => {
     const classes = useStyles();
 
+    const tabs = [
+        {
+            labelTab: "Data",
+            linkTab: "/data",
+        },
+        {
+            labelTab: "Studies",
+            linkTab: "/studies"
+        }
+    ];
+
     return (
         <div className={classes.root}>
             <Grid container
                   justify="center">
                 <AppBar position="static" style={{'background': COLOR_BLUE}}>
                     <Toolbar variant="dense">
-                        <DataStudiesTabs title="title"/>
+                        <DataStudiesTabs tabsInfo={tabs}/>
                         <div className={classes.toolbarButtons}>
                             <DataStudiesIconButton name={nameIcons.USER} color={"white"}/>
                         </div>
