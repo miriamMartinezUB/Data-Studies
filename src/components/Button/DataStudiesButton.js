@@ -43,10 +43,10 @@ const DataStudiesButton = ({variant, color, size, background, label, onClick}) =
 }
 
 DataStudiesButton.propTypes = {
-    variant: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-    size: PropTypes.string.isRequired,
-    background: PropTypes.string.isRequired,
+    variant: PropTypes.string,
+    color: PropTypes.string,
+    size: PropTypes.string,
+    background: PropTypes.string,
     label: PropTypes.string.isRequired,
     onClick: PropTypes.func
 }
