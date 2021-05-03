@@ -7,7 +7,8 @@ export default {
 }
 
 export const StudyButtonWithAllArgs = () => (
-    <DataStudiesObjectButton name={"Study name"}
+    <DataStudiesObjectButton name={"hola"}
                              date={"01/01/2021"}
                              description={"Description"}
+                             type={"study"}
     />)
