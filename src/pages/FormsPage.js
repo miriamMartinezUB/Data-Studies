@@ -1,10 +1,7 @@
 import React from 'react'
 import {Grid, List} from "@material-ui/core";
 import DataStudiesAppBar from "../components/AppBar";
-import DataStudiesTabs from "../components/Tabs";
-import Typography from "@material-ui/core/Typography";
 import {nameIcons} from "../constants/icons";
-import {COLOR_BLUE} from "../constants/colors";
 import DataStudiesIconButton from "../components/IconButton";
 import DataStudiesObjectButton from "../components/ObjectButton";
 import DataStudiesTextArea from "../components/TextArea";
@@ -66,18 +63,24 @@ const FormsPage = () => {
     ]
     return (
         <Grid container direction={"column"}>
-            {openModal && <DataStudiesDialog title={"title"}
-                               description={"description"}
-                               textButton={"button text"}
-                               children={
-                                   <DataStudiesTextArea
-                                       defaultMessage={"Write here"}
-                                       minRowSize={10}
-                                       maxChars={100}
-                                       maxRowSize={10}
-                                       required={true}/>
-                               }
-            />}
+            {openModal && <DataStudiesDialog
+                title={"title"}
+                description={"description"}
+                textButton={"button text"}
+                children={
+                    <DataStudiesTextArea
+                        defaultMessage={"Write here"}
+                        minRowSize={10}
+                        maxChars={100}
+                        maxRowSize={10}
+                        required={true}
+                        onChange={() => {
+                        }}
+                    />
+                }
+                onClose={() => {
+                    setOpenModal(false)
+                }}/>}
             <Grid item>
                 <DataStudiesAppBar/>
             </Grid>
