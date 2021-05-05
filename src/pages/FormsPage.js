@@ -9,9 +9,11 @@ import DataStudiesIconButton from "../components/IconButton";
 import DataStudiesObjectButton from "../components/ObjectButton";
 import DataStudiesTextArea from "../components/TextArea";
 import DataStudiesDialog from "../components/Dialog";
+import {useHistory} from "react-router-dom";
 
 const FormsPage = () => {
     const [openModal, setOpenModal] = React.useState(false);
+    const history = useHistory();
 
     const listImages = [
         {
@@ -106,8 +108,8 @@ const FormsPage = () => {
                                    </GridList>
                                }
                              onClose={() => {
-                                 setOpenModal(false)
-                             }}/>}
+                                 history.push(`/form/hola`);
+                             }}
             />}
             <Grid item>
                 <DataStudiesAppBar/>
