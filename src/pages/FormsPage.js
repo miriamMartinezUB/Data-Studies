@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid, List} from "@material-ui/core";
+import {Grid, GridList, GridListTile, GridListTileBar, List} from "@material-ui/core";
 import DataStudiesAppBar from "../components/AppBar";
 import DataStudiesTabs from "../components/Tabs";
 import Typography from "@material-ui/core/Typography";
@@ -13,6 +13,28 @@ import DataStudiesDialog from "../components/Dialog";
 const FormsPage = () => {
     const [openModal, setOpenModal] = React.useState(false);
 
+    const listImages = [
+        {
+            link: "https://www.joantrave.com/gallery/template_blank.png",
+            title: "Blank template"
+        },
+        {
+            link: "https://www.joantrave.com/gallery/template_one.png",
+            title: "Template One"
+        },
+        {
+            link: "https://www.joantrave.com/gallery/template_two.png",
+            title: "Template Two"
+        },
+        {
+            link: "https://www.joantrave.com/gallery/template_three.png",
+            title: "Template Three"
+        },
+        {
+            link: "https://www.joantrave.com/gallery/template_four.png",
+            title: "Template Four"
+        }
+    ]
 
     const listForms = [
         {
@@ -66,16 +88,22 @@ const FormsPage = () => {
     ]
     return (
         <Grid container direction={"column"}>
-            {openModal && <DataStudiesDialog title={"title"}
-                               description={"description"}
-                               textButton={"button text"}
+            {openModal && <DataStudiesDialog title={"New form"}
+                               description={"Please choose template"}
+                               textButton={"Create"}
                                children={
-                                   <DataStudiesTextArea
-                                       defaultMessage={"Write here"}
-                                       minRowSize={10}
-                                       maxChars={100}
-                                       maxRowSize={10}
-                                       required={true}/>
+                                   <GridList cellHeight={160} cols={2}>
+                                       {listImages.map(image => (
+                                           <GridListTile key={image.link} onClick={function (){}}>
+                                               <div className="trim" style={{maxHeight: "160px", overflow: "hidden"}}>
+                                                   <img src={image.link} alt={image.link}/>
+                                               </div>
+                                               <GridListTileBar
+                                                   title={image.title}
+                                               />
+                                           </GridListTile>
+                                       ))}
+                                   </GridList>
                                }
             />}
             <Grid item>
@@ -104,6 +132,6 @@ const FormsPage = () => {
             </Grid>
         </Grid>
     )
-}
+};
 
 export default FormsPage
