@@ -2,7 +2,6 @@ import React from 'react'
 import DataStudiesIconButton from "./DataStudiesIconButton";
 import {nameIcons} from "../../constants/icons";
 import {COLOR_BLUE} from "../../constants/colors";
-import DataStudiesButton from "../Button";
 
 
 export default {

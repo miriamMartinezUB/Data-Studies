@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TextareaAutosize from '@material-ui/core/TextareaAutosize'
 
-const DataStudiesTextArea = ({defaultMessage, maxRowSize, minRowSize, maxChars, required}) => {
+const DataStudiesTextArea = ({defaultMessage, maxRowSize, minRowSize, maxChars, required, onChange}) => {
     return (
         <TextareaAutosize style={{width: "100%"}}
                           inputMode={"text"}
@@ -10,6 +10,7 @@ const DataStudiesTextArea = ({defaultMessage, maxRowSize, minRowSize, maxChars, 
                           aria-label="empty textarea"
                           placeholder={defaultMessage}
                           rowsMax={maxRowSize}
+                          onChange={onChange}
                           rowsMin={minRowSize}
                           maxLength={maxChars}/>
     )
@@ -20,7 +21,8 @@ DataStudiesTextArea.propTypes = {
     maxRowSize: PropTypes.number,
     minRowSize: PropTypes.number,
     maxChars: PropTypes.number,
-    required: PropTypes.bool.isRequired
+    required: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired
 }
 
 export default DataStudiesTextArea
