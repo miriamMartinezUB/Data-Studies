@@ -105,6 +105,9 @@ const FormsPage = () => {
                                        ))}
                                    </GridList>
                                }
+                             onClose={() => {
+                                 setOpenModal(false)
+                             }}/>}
             />}
             <Grid item>
                 <DataStudiesAppBar/>

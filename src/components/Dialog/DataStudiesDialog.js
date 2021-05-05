@@ -11,13 +11,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types'
 
-const DataStudiesDialog = ({title, description, children, textButton}) => {
-    const [open, setOpen] = React.useState(true); //TODO change to false when put in button
-    const [maxWidth, setMaxWidth] = React.useState('sm');
-
-    const handleClose = () => {
-        setOpen(false);
-    };
+const DataStudiesDialog = ({title, description, children, textButton,onClose, onCancel}) => {
 
     const styles = (theme) => ({
         root: {
@@ -37,8 +31,8 @@ const DataStudiesDialog = ({title, description, children, textButton}) => {
         return (
             <MuiDialogTitle disableTypography className={classes.root} {...other}>
                 <Typography variant="h6">{children}</Typography>
-                {onClose ? (
-                    <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+                {onCancel ? (
+                    <IconButton aria-label="close" className={classes.closeButton} onClick={onCancel}>
                         <CloseIcon/>
                     </IconButton>//TODO change to own icon button
                 ) : null}
@@ -47,11 +41,11 @@ const DataStudiesDialog = ({title, description, children, textButton}) => {
     });
 
     return (
-        <Dialog onClose={handleClose}
+        <Dialog onClose={onCancel}
                 fullWidth={true}
                 aria-labelledby="customized-dialog-title"
-                open={open}>
-            <DialogTitle id="customized-dialog-title" onClose={handleClose}>{title}</DialogTitle>
+                open={true}>
+            <DialogTitle id="customized-dialog-title" onClose={onCancel}>{title}</DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     <Typography>{description}</Typography>
@@ -59,7 +53,7 @@ const DataStudiesDialog = ({title, description, children, textButton}) => {
                 {children}
             </DialogContent>
             <DialogActions>
-                <Button autoFocus onClick={handleClose} color="primary">
+                <Button autoFocus onClick={onClose} color="primary">
                     {textButton}
                 </Button>
             </DialogActions>
@@ -73,6 +67,8 @@ DataStudiesDialog.propTypes = {
     textButton: PropTypes.string.isRequired,
     description: PropTypes.string,
     children: PropTypes.node,
+    onClose: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired
 }
 
 export default DataStudiesDialog
