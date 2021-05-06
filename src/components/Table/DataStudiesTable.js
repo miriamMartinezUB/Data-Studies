@@ -9,6 +9,7 @@ import DataStudiesTextArea from "../TextArea";
 
 const DataStudiesTable = ({columns, rows, name}) => {
     const [showMailIcon, setShowMailIcon] = React.useState(false);
+    const [disableModalButton, setDisableModalButton] = React.useState(true);
     const [showSnackBar, setShowSnackBar] = React.useState(false);
     const [textSnackBar, setTextSnackBar] = React.useState("Succesfully sended");
     const [notificationText, setNotificationText] = React.useState(null);
@@ -37,6 +38,7 @@ const DataStudiesTable = ({columns, rows, name}) => {
             {openModal && <DataStudiesDialog title={"Send Notification"}
                                              description={modalDescription}
                                              textButton={"Send"}
+                                             disableModal={disableModalButton}
                                              children={
                                                  <DataStudiesTextArea
                                                      defaultMessage={"Write here"}
@@ -45,7 +47,8 @@ const DataStudiesTable = ({columns, rows, name}) => {
                                                      maxRowSize={10}
                                                      required={true}
                                                      onChange={(text) => {
-                                                         setNotificationText(text)
+                                                         setDisableModalButton(false);
+                                                         setNotificationText(text);
                                                      }}
                                                  />
                                              }

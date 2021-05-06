@@ -11,7 +11,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types'
 
-const DataStudiesDialog = ({title, description, children, textButton,onClose, onCancel}) => {
+const DataStudiesDialog = ({title, description, children, textButton,onClose, onCancel, disableModal}) => {
 
     const styles = (theme) => ({
         root: {
@@ -53,7 +53,7 @@ const DataStudiesDialog = ({title, description, children, textButton,onClose, on
                 {children}
             </DialogContent>
             <DialogActions>
-                <Button autoFocus onClick={onClose} color="primary">
+                <Button autoFocus onClick={onClose} color="primary" disabled={disableModal}>
                     {textButton}
                 </Button>
             </DialogActions>
