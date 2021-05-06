@@ -63,6 +63,7 @@ const DataStudiesTable = ({columns, rows, name}) => {
                                                      setOpenModal(false)
                                                      setShowSnackBar(true)
                                                  }
+                                                 setDisableModalButton(true)
                                              }}
                                              onCancel={() => {
                                                  setTextSnackBar("Succesfully sended")
