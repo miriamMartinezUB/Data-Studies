@@ -4,6 +4,7 @@ import DataStudiesAppBar from "../components/AppBar";
 import {nameIcons} from "../constants/icons";
 import DataStudiesIconButton from "../components/IconButton";
 import DataStudiesData from "../components/Data";
+import 'typeface-roboto'
 
 const DataPage = () => {
     const listData = [

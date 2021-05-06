@@ -2,6 +2,7 @@ import React from 'react'
 import {Grid} from "@material-ui/core";
 import DataStudiesAppBar from "../components/AppBar";
 import DataStudiesContentViewLanding from "../components/ContentViewLanding";
+import 'typeface-roboto'
 
 const HomePage = () => {
     return (

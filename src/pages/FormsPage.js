@@ -1,15 +1,12 @@
 import React from 'react'
 import {Grid, GridList, GridListTile, GridListTileBar, List} from "@material-ui/core";
 import DataStudiesAppBar from "../components/AppBar";
-import DataStudiesTabs from "../components/Tabs";
-import Typography from "@material-ui/core/Typography";
 import {nameIcons} from "../constants/icons";
-import {COLOR_BLUE} from "../constants/colors";
 import DataStudiesIconButton from "../components/IconButton";
 import DataStudiesObjectButton from "../components/ObjectButton";
-import DataStudiesTextArea from "../components/TextArea";
 import DataStudiesDialog from "../components/Dialog";
 import {useHistory} from "react-router-dom";
+import 'typeface-roboto'
 
 const FormsPage = () => {
     const [openModal, setOpenModal] = React.useState(false);

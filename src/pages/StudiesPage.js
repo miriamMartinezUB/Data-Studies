@@ -1,12 +1,10 @@
 import React from 'react'
 import {Grid, List} from "@material-ui/core";
 import DataStudiesAppBar from "../components/AppBar";
-import DataStudiesTabs from "../components/Tabs";
-import Typography from "@material-ui/core/Typography";
 import {nameIcons} from "../constants/icons";
-import {COLOR_BLUE} from "../constants/colors";
 import DataStudiesIconButton from "../components/IconButton";
 import DataStudiesObjectButton from "../components/ObjectButton";
+import 'typeface-roboto'
 
 const SutiesPage = () => {
     const listStudies = [
