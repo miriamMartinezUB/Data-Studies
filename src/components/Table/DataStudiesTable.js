@@ -1,13 +1,13 @@
 import React from 'react'
 import {DataGrid} from '@material-ui/data-grid';
 import PropTypes from 'prop-types'
-import {Grid, Snackbar} from "@material-ui/core";
+import {Grid, Snackbar, Typography} from "@material-ui/core";
 import DataStudiesIconButton from "../IconButton";
 import {nameIcons} from "../../constants/icons";
 import DataStudiesDialog from "../Dialog";
 import DataStudiesTextArea from "../TextArea";
 
-const DataStudiesTable = ({columns, rows}) => {
+const DataStudiesTable = ({columns, rows, name}) => {
     const [showMailIcon, setShowMailIcon] = React.useState(false);
     const [disableModalButton, setDisableModalButton] = React.useState(true);
     const [showSnackBar, setShowSnackBar] = React.useState(false);
@@ -63,25 +63,38 @@ const DataStudiesTable = ({columns, rows}) => {
                                                      setOpenModal(false)
                                                      setShowSnackBar(true)
                                                  }
+                                                 setDisableModalButton(true)
                                              }}
                                              onCancel={() => {
                                                  setTextSnackBar("Succesfully sended")
                                                  setNotificationText(null)
-                                                 setModalDescription("An email will be sent to patient/s:")
                                                  setOpenModal(false)
                                              }}/>}
-            {showMailIcon && <Grid container item
-                                   direction={"row-reverse"}
-                                   alignItems={"flex-end"}>
+
+            <Grid container item
+                  alignItems={"center"}
+                  direction={"row"}
+                  justify={"space-between"}
+                  style={{marginBottom: "20px"}}>
+                <Grid>
+                    <Typography display={'inline'} variant={"h4"}>
+                        {`Reports of `}
+                    </Typography>
+                    <Typography display={'inline'} variant={"h4"}>
+                        <b>{name}</b>
+                    </Typography>
+                </Grid>
+                {showMailIcon &&
                 <DataStudiesIconButton
                     name={nameIcons.MAIL}
                     color={"primary"}
                     size={"medium"}
                     onClick={() => {
                         setOpenModal(true);
-                    }}/>
-            </Grid>}
-            <Grid item
+                    }}/>}
+            </Grid>
+            <Grid container item
+                  direction={"column"}
                   alignItems={"center"}>
                 <div style={{height: 400, width: '100%'}}>
                     <DataGrid rows={rows} columns={columns} pageSize={pageSize} checkboxSelection
@@ -92,8 +105,8 @@ const DataStudiesTable = ({columns, rows}) => {
                                   } else {
                                       let patients = ""
                                       param.selectionModel.forEach((value, index) => {
-                                          patients = patients + value
-                                          if (rows.length !== index) {
+                                          patients = patients + rows[index].id_patient
+                                          if ((rows.length - 1) !== index) {
                                               patients = patients + ", "
                                           }
                                       })
@@ -111,23 +124,8 @@ const DataStudiesTable = ({columns, rows}) => {
 
 DataStudiesTable.propTypes = {
     columns: PropTypes.array.isRequired,
-    rows: PropTypes.array.isRequired
+    rows: PropTypes.array.isRequired,
+    name: PropTypes.string.isRequired
 }
 
 export default DataStudiesTable
-
-/*                      onRowSelected={(rowItem) => {
-                                  setModalDescription(modalDescription+rowItem.data.id_patient)
-                                  setShowMailIcon(true)
-                              }}
-                              onColumnHeaderClick={() => {
-                                  let patients=""
-                                  rows.forEach(element => {
-                                      patients = patients + ` ${element.id_patient}`
-                                      if(rows[rows.length-1]!== element){
-                                          patients = patients + ","
-                                      }
-                                  });
-                                  setModalDescription(modalDescription+patients)
-                                  setShowMailIcon(true)
-                              }}*/
