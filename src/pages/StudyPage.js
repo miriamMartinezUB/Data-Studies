@@ -2,9 +2,8 @@ import React from 'react'
 import {Grid} from "@material-ui/core";
 import DataStudiesAppBar from "../components/AppBar";
 import Typography from "@material-ui/core/Typography";
-import DataStudiesContentViewLanding from "../components/ContentViewLanding";
-import 'typeface-roboto'
 import DataStudiesTabs from "../components/Tabs";
+import 'typeface-roboto'
 
 const StudyPage = () => {
     const tabs = [
