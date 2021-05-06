@@ -98,7 +98,7 @@ const FormsPage = () => {
                                        {listImages.map(image => (
                                            <GridListTile key={image.link} onClick={function (){}}>
                                                <div className="trim" style={{maxHeight: "160px", overflow: "hidden"}}>
-                                                   <img src={image.link} alt={image.link}/>
+                                                   <input type={"image"} src={image.link} alt={image.link} style={{maxWidth: "100%"}}/>
                                                </div>
                                                <GridListTileBar
                                                    title={image.title}
