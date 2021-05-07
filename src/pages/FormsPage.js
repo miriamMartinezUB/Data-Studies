@@ -1,5 +1,5 @@
-import React from 'react'
-import {Grid, GridList, GridListTile, GridListTileBar, List} from "@material-ui/core";
+import React, {useRef} from 'react'
+import {Grid, GridList, GridListTile, GridListTileBar, List, TextField} from "@material-ui/core";
 import DataStudiesAppBar from "../components/AppBar";
 import {nameIcons} from "../constants/icons";
 import DataStudiesIconButton from "../components/IconButton";
@@ -7,11 +7,13 @@ import DataStudiesObjectButton from "../components/ObjectButton";
 import DataStudiesDialog from "../components/Dialog";
 import {useHistory} from "react-router-dom";
 import 'typeface-roboto'
+import DataStudiesTextArea from "../components/TextArea";
 
 const FormsPage = () => {
     const [openModal, setOpenModal] = React.useState(false);
     const history = useHistory();
     const [disableModalButton, setDisableModalButton] = React.useState(true);
+    const newFormName = useRef('')
 
     const listImages = [
         {
@@ -92,28 +94,45 @@ const FormsPage = () => {
                                description={"Please choose template"}
                                textButton={"Create"}
                                children={
-                                   <GridList cellHeight={160} cols={2}>
-                                       {listImages.map(image => (
-                                           <GridListTile key={image.link} onClick={function (){}}>
-                                               <div className="trim" style={{maxHeight: "160px", overflow: "hidden"}}>
-                                                   <input
-                                                       type={"image"}
-                                                       src={image.link}
-                                                       alt={image.link}
-                                                       style={{maxWidth: "100%"}}
-                                                       onClick={function () {setDisableModalButton(false)}}
+                                   <div>
+                                       <TextField
+                                           style={{marginBottom: "20px"}}
+                                           id="outlined-basic"
+                                           label="New form name"
+                                          variant="outlined"
+                                           inputRef={newFormName}
+                                       />
+                                       <DataStudiesTextArea
+                                           defaultMessage={"New form description"}
+                                           minRowSize={10}
+                                           maxChars={100}
+                                           maxRowSize={10}
+                                           onChange={() => {}}
+                                       />
+                                       <GridList cellHeight={160} cols={2}>
+                                           {listImages.map(image => (
+                                               <GridListTile key={image.link} onClick={function (){}}>
+                                                   <div className="trim" style={{maxHeight: "160px", overflow: "hidden"}}>
+                                                       <input
+                                                           type={"image"}
+                                                           src={image.link}
+                                                           alt={image.link}
+                                                           style={{maxWidth: "100%"}}
+                                                           onClick={function () {setDisableModalButton(false)}}
+                                                       />
+                                                   </div>
+                                                   <GridListTileBar
+                                                       title={image.title}
                                                    />
-                                               </div>
-                                               <GridListTileBar
-                                                   title={image.title}
-                                               />
-                                           </GridListTile>
-                                       ))}
-                                   </GridList>
+                                               </GridListTile>
+                                           ))}
+                                       </GridList>
+                                   </div>
                                }
                              onClose={() => {
-                                 history.push(`/form/hola`);
+                                 history.push(`/form/${newFormName.current.value}`);
                              }}
+                             onCancel={()=>{setDisableModalButton(false);}}
                              disableModal={disableModalButton}
             />}
             <Grid item>
