@@ -57,10 +57,10 @@ const DataStudiesData = ({name, description, columns, data}) => {
             <Grid item xs={'auto'} sm container>
                 <Grid item xs container direction={"row"} spacing={2}>
                     <Grid item xs>
-                        <Typography gutterBottom={true} variant="subtitle1">
+                        <Typography gutterBottom={true} variant="h6">
                             {name}
                         </Typography>
-                        <Typography variant="body1" color="textSecondary">
+                        <Typography variant="body1" style={{ color: "black" }}>
                             {description}
                         </Typography>
                     </Grid>

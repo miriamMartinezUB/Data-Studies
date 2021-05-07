@@ -11,7 +11,7 @@ const DataStudiesTable = ({columns, rows, name}) => {
     const [showMailIcon, setShowMailIcon] = React.useState(false);
     const [disableModalButton, setDisableModalButton] = React.useState(true);
     const [showSnackBar, setShowSnackBar] = React.useState(false);
-    const [textSnackBar, setTextSnackBar] = React.useState("Succesfully sended");
+    const [textSnackBar, setTextSnackBar] = React.useState("Successfully sent");
     const [notificationText, setNotificationText] = React.useState(null);
     const [openModal, setOpenModal] = React.useState(false);
     const [modalDescription, setModalDescription] = React.useState("An email will be sent to patient/s:");
@@ -57,7 +57,7 @@ const DataStudiesTable = ({columns, rows, name}) => {
                                                      setTextSnackBar("You must write a message to can send")
                                                      setShowSnackBar(true)
                                                  } else {
-                                                     setTextSnackBar("Succesfully sended")
+                                                     setTextSnackBar("Successfully sent")
                                                      setNotificationText(null)
                                                      setModalDescription("An email will be sent to patient/s:")
                                                      setOpenModal(false)
@@ -66,7 +66,7 @@ const DataStudiesTable = ({columns, rows, name}) => {
                                                  setDisableModalButton(true)
                                              }}
                                              onCancel={() => {
-                                                 setTextSnackBar("Succesfully sended")
+                                                 setTextSnackBar("Successfully sent")
                                                  setNotificationText(null)
                                                  setOpenModal(false)
                                              }}/>}
