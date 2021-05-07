@@ -78,7 +78,7 @@ const DataStudiesTable = ({columns, rows, name}) => {
                   style={{marginBottom: "20px"}}>
                 <Grid>
                     <Typography display={'inline'} variant={"h4"}>
-                        {`Reports of `}
+                        {`Reports `}
                     </Typography>
                     <Typography display={'inline'} variant={"h4"}>
                         <b>{name}</b>
