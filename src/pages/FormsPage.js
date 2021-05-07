@@ -1,8 +1,5 @@
 import React, {useRef} from 'react'
-import {Grid, GridList, GridListTile, GridListTileBar, List, TextField} from "@material-ui/core";
-import DataStudiesAppBar from "../components/AppBar";
-import React from 'react'
-import {Grid, GridList, GridListTile, GridListTileBar, List, Paper, Typography} from "@material-ui/core";
+import {Grid, GridList, GridListTile, GridListTileBar, List, Paper, Typography, TextField} from "@material-ui/core";
 import {nameIcons} from "../constants/icons";
 import DataStudiesIconButton from "../components/IconButton";
 import DataStudiesObjectButton from "../components/ObjectButton";
@@ -83,36 +80,14 @@ const FormsPage = () => {
                                    </div>
                                }
                              onClose={() => {
-                                 history.push(`/form/${newFormName.current.value}`);
+                                 history.push(`form/${newFormName.current.value}/reports`);
                              }}
-                             onCancel={()=>{setDisableModalButton(false);}}
+                             onCancel={()=>{
+                                 setOpenModal(false);
+                                 setDisableModalButton(true);
+                             }}
                              disableModal={disableModalButton}
             />}
-            <Grid item>
-                <DataStudiesAppBar/>
-            </Grid>
-            <Grid item justify="flex-start" direction="row-reverse">
-                <DataStudiesIconButton
-                    name={nameIcons.NEW}
-                    color={"primary"}
-                    size={"medium"}
-                    onClick={() => {
-                        setOpenModal(true);
-                    }}
-                />
-            </Grid>
-            <Grid container item direction={"column"}>
-                <List>
-                    {listForms.map(item => (
-                        <DataStudiesObjectButton name={item.name}
-                                                 date={item.date}
-                                                 description={item.description}
-                                                 type={item.type}
-                        />
-                    ))}
-                </List>
-            </Grid>
-        </Grid>
         <DataStudiesAppFrame>
             <Grid container direction={"column"} alignItems={"center"}>
                 <Grid item style={{margin: "20px"}}>
@@ -151,47 +126,11 @@ const FormsPage = () => {
                             />
                         </Grid>
                         <Grid container direction={"column"}>
-                            {openModal && <DataStudiesDialog title={"New form"}
-                                                             description={"Please choose template"}
-                                                             textButton={"Create"}
-                                                             children={
-                                                                 <GridList cellHeight={160} cols={2}>
-                                                                     {listImages.map(image => (
-                                                                         <GridListTile key={image.link}
-                                                                                       onClick={function () {
-                                                                                       }}>
-                                                                             <div className="trim"
-                                                                                  style={{
-                                                                                      maxHeight: "160px",
-                                                                                      overflow: "hidden"
-                                                                                  }}>
-                                                                                 <input
-                                                                                     type={"image"}
-                                                                                     src={image.link}
-                                                                                     alt={image.link}
-                                                                                     style={{maxWidth: "100%"}}
-                                                                                     onClick={function () {
-                                                                                         setDisableModalButton(false)
-                                                                                     }}
-                                                                                 />
-                                                                             </div>
-                                                                             <GridListTileBar
-                                                                                 title={image.title}
-                                                                             />
-                                                                         </GridListTile>
-                                                                     ))}
-                                                                 </GridList>
-                                                             }
-                                                             onClose={() => {
-                                                                 history.push(`/form/hola`);
-                                                             }}
-                                                             disableModal={disableModalButton}
-                            />}
                             <Grid container item direction={"column"}>
                                 <List>
                                     {listForms.map(item => (
                                         <DataStudiesObjectButton
-                                            path={`/study/${path_array[path_array.length - 2]}/form/${item.name}`}
+                                            path={`/study/${path_array[path_array.length - 2]}/form/${item.name}/reports`}
                                             name={item.name}
                                             date={item.date}
                                             description={item.description}/>
@@ -203,7 +142,8 @@ const FormsPage = () => {
                 </Paper>
             </Grid>
         </DataStudiesAppFrame>
+        </Grid>
     )
 };
 
-export default FormsPage
+export default FormsPage;

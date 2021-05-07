@@ -39,7 +39,7 @@ const StudiesPage = () => {
                         <Grid container item direction={"column"}>
                             <List>
                                 {listStudies.map(item => (
-                                    <DataStudiesObjectButton path={`study/${item.name}`}
+                                    <DataStudiesObjectButton path={`study/${item.name}/forms`}
                                                              name={item.name}
                                                              date={item.date}
                                                              description={item.description}/>
