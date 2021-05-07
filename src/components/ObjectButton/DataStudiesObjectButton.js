@@ -1,33 +1,41 @@
 import React from 'react'
-import ListItem from '@material-ui/core/ListItem'
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types'
-import { useHistory } from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
+import {Grid, ListItem, Typography} from "@material-ui/core";
 
-const DataStudiesObjectButton = ({name, date, description, type}) => {
+const DataStudiesObjectButton = ({name,path, date, description}) => {
     const history = useHistory()
 
     const onClickHandler = () => {
-        history.push(`/${type}/${name}`)
+        history.push(path)
     }
 
-    return(
-        <ListItem key={`${name}`} button component={'a'} onClick={onClickHandler}>
-            <Grid item xs={'auto'} sm container>
-                <Grid item xs container direction={"row"} spacing={2}>
-                    <Grid item xs>
+    return (
+        <ListItem key={name} button
+                  component={'a'}
+                  onClick={onClickHandler}
+                  divider={true}>
+            <Grid item xs={'auto'}
+                  container
+                  direction={"column"}>
+                <Grid item xs container
+                      direction={"row"}
+                      spacing={2}
+                      justify={"space-between"}>
+                    <Grid item>
                         <Typography gutterBottom={true} variant="subtitle1">
                             {name}
                         </Typography>
-                        <Typography variant="body1" color="textSecondary">
-                            {description}
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="caption" >
+                            {date}
                         </Typography>
                     </Grid>
                 </Grid>
                 <Grid item>
-                    <Typography variant="subtitle2">
-                        {date}
+                    <Typography variant="body1" color="textSecondary">
+                        {description}
                     </Typography>
                 </Grid>
             </Grid>
@@ -37,9 +45,9 @@ const DataStudiesObjectButton = ({name, date, description, type}) => {
 
 DataStudiesObjectButton.propTypes = {
     name: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     description: PropTypes.string,
-    type: PropTypes.string.isRequired
 }
 
 export default DataStudiesObjectButton

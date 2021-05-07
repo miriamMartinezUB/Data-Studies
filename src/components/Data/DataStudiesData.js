@@ -1,15 +1,14 @@
 import React from 'react'
-import ListItem from '@material-ui/core/ListItem'
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types'
-import {createMuiTheme, makeStyles, Modal, MuiThemeProvider} from "@material-ui/core";
+import {createMuiTheme, Grid, ListItem, makeStyles, MuiThemeProvider, Typography} from "@material-ui/core";
 import DataStudiesIconButton from "../IconButton";
 import DataStudiesDataModal from "../DataModal";
+import {nameIcons} from "../../constants/icons";
+import DataStudiesDialog from "../Dialog";
 
 const DataStudiesData = ({name, description, columns, data}) => {
-
     const [open, setOpen] = React.useState(false);
+
     const handleOpen = () => {
         setOpen(true);
     };
@@ -43,7 +42,7 @@ const DataStudiesData = ({name, description, columns, data}) => {
     }));
 
     const inlineStyle = {
-        modal : {
+        modal: {
             marginTop: 'auto',
             display: 'inline-block',
             position: 'absolute',
@@ -53,8 +52,8 @@ const DataStudiesData = ({name, description, columns, data}) => {
 
     const classes = useStyles();
 
-    return(
-        <ListItem>
+    return (
+        <ListItem divider={true}>
             <Grid item xs={'auto'} sm container>
                 <Grid item xs container direction={"row"} spacing={2}>
                     <Grid item xs>
@@ -70,28 +69,27 @@ const DataStudiesData = ({name, description, columns, data}) => {
                     <MuiThemeProvider theme={theme}>
                         <div className={classes.root}>
                             <DataStudiesIconButton
-                                name={'show'}
-                                color={'secondary'}
-                                size={'10'}
-                                background={'COLOR_BLUE'}
+                                name={nameIcons.SHOW}
+                                size={"medium"}
+                                color={"inherit"}
                                 onClick={handleOpen}>
                             </DataStudiesIconButton>
-                            <Modal
-                                open={open}
-                                style={inlineStyle.modal}
-                                onClose={handleClose}>
-                                <DataStudiesDataModal
-                                    columns={columns}
-                                    name={name}
-                                    data={data}>
-                                </DataStudiesDataModal>
-                            </Modal>
+                            {open && <DataStudiesDialog onClose={() => onDownload({name})}
+                                                        onCancel={() => {
+                                                            handleClose()
+                                                        }}
+                                                        textButton={"Download"} title={name}
+                                                        description={description}
+                                                        children={<DataStudiesDataModal
+                                                            columns={columns}
+                                                            name={name}
+                                                            data={data}>
+                                                        </DataStudiesDataModal>}/>}
                             <DataStudiesIconButton
-                                name={'download'}
-                                color={'primary'}
-                                size={'10'}
-                                background={'COLOR_BLUE'}
-                                onClick={()=>onDownload({name})}>
+                                name={nameIcons.DOWNLOAD}
+                                size={"medium"}
+                                color={"inherit"}
+                                onClick={() => onDownload({name})}>
                             </DataStudiesIconButton>
                         </div>
                     </MuiThemeProvider>

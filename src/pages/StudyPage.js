@@ -1,42 +1,72 @@
 import React from 'react'
 import {Grid} from "@material-ui/core";
-import DataStudiesAppBar from "../components/AppBar";
-import Typography from "@material-ui/core/Typography";
+import DataStudiesAppFrame from "../components/AppFrame";
+import {useLocation} from 'react-router-dom'
 import DataStudiesTabs from "../components/Tabs";
-import 'typeface-roboto'
+import Typography from "@material-ui/core/Typography";
+import {COLOR_GRAY} from "../constants/colors";
 
 const StudyPage = () => {
-    const tabs = [
+    const location = useLocation();
+    let path_array = location.pathname.split("/");
+
+    const studyTabs = [
         {
             labelTab: "Documentation",
             linkTab: "/not/implemented",
         },
         {
             labelTab: "Forms",
-            linkTab: "/forms"
+            linkTab: `/study/${path_array[path_array.length - 1]}/forms`,
         },
         {
             labelTab: "Add researcher",
-            linkTab: "/not/implemented"
+            linkTab: "/not/implemented",
         }
     ];
 
     return (
-        <Grid container direction={"column"}>
-            <Grid item>
-                <DataStudiesAppBar/>
-            </Grid>
-            <Grid item justify="center" style={{display: "grid"}}>
-                <DataStudiesTabs tabsInfo={tabs} />
-            </Grid>
-            <Grid item>
-                <Typography variant="body1" align={"justify"} style={{margin: "2% 15%"}}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat massa metus, vitae dapibus massa lacinia vel. Aenean laoreet, sem et consectetur tempor, tellus sem luctus nisi, sed eleifend quam urna quis urna. Donec feugiat ullamcorper sollicitudin. Vestibulum laoreet arcu vitae diam blandit hendrerit. Suspendisse potenti. Cras sit amet fermentum sem, id dictum tortor. Vestibulum consectetur blandit orci pulvinar lobortis. Fusce efficitur, odio quis dictum ullamcorper, nibh leo commodo magna, fermentum tincidunt ipsum tellus eu velit. Proin maximus interdum commodo. Cras quis enim ac lectus rutrum rutrum.
+        <DataStudiesAppFrame>
+            <Grid container direction={"column"} alignItems={"center"}>
+                <Grid item style={{margin:"20px"}}>
+                    <Typography display={'inline'} variant={"h4"}>
+                        {`Manage study `}
+                    </Typography>
+                    <Typography display={'inline'} variant={"h4"}>
+                        <b>{path_array[path_array.length - 1]}</b>
+                    </Typography>
+                </Grid>
+                <Grid item justify="center"  style={{display: "grid", marginBottom:"20px"}}>
+                        <DataStudiesTabs tabsInfo={studyTabs}/>
+                </Grid>
+                <Grid item >
+                    <Typography variant={"body1"} align={"justify"} style={{margin:"2px 15%"}}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec gravida felis. Nam facilisis
+                        arcu
+                        sed tempor ornare. Aenean laoreet at leo ut aliquam. Proin pharetra risus id orci tristique
+                        vehicula. Duis consequat efficitur neque. Suspendisse fermentum cursus blandit. Aliquam varius
+                        tortor id sapien laoreet, mollis semper velit bibendum. Quisque fringilla, enim in molestie
+                        placerat, ex sapien commodo sem, eu luctus sem odio at eros. In ac massa id felis molestie
+                        dapibus
+                        eget non risus. Proin nec finibus purus. Pellentesque et egestas mauris, non varius tellus.
+                        Aenean
+                        viverra accumsan maximus. Duis ac urna id neque molestie tempor porta non nibh. Vestibulum
+                        euismod
+                        eget neque eu malesuada. Integer id sapien rhoncus, porttitor arcu sit amet, fermentum quam.
 
-                    Vivamus libero nisi, pellentesque vel posuere eu, vestibulum ac odio. Cras in vestibulum purus. Nam placerat ut risus nec efficitur. Nulla pulvinar tellus at dolor congue mollis. Nunc ornare rhoncus eros, non commodo mi scelerisque eu. Vivamus lacinia ex id odio auctor pretium. Nullam nec convallis lacus. Nullam quis faucibus ante. Phasellus et sagittis sem. In volutpat in enim viverra vehicula. Nunc est augue, gravida eget cursus eget, dictum vel risus. Vivamus nec sollicitudin leo. Curabitur bibendum metus urna, non tincidunt lectus sagittis eu.
-                </Typography>
+                        Phasellus consectetur massa eget imperdiet venenatis. In eget enim a felis scelerisque tincidunt
+                        eget ut lorem. Suspendisse potenti. Vestibulum egestas mi vel odio vulputate, et maximus eros
+                        vehicula. Vivamus tincidunt rutrum aliquet. Etiam efficitur non quam vitae maximus. Maecenas
+                        efficitur laoreet justo sit amet ornare. Maecenas est metus, sagittis egestas nulla non, lacinia
+                        mattis magna. Aenean vel nisi tortor. Duis et suscipit justo. Suspendisse molestie mauris
+                        dignissim
+                        augue dignissim vehicula in a enim. Mauris ac feugiat quam. Aliquam ex ligula, scelerisque sed
+                        est
+                        ut, aliquam consequat nisl.
+                    </Typography>
+                </Grid>
             </Grid>
-        </Grid>
+        </DataStudiesAppFrame>
     )
 }
 

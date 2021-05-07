@@ -19,29 +19,42 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const DataStudiesAppBar = ({title}) => {
+const DataStudiesAppBar = ({tabs, showIcon,background}) => {
     const classes = useStyles();
 
-    const tabs = [
-        {
-            labelTab: "Data",
-            linkTab: "/data",
-        },
-        {
-            labelTab: "Studies",
-            linkTab: "/studies"
-        }
-    ];
-
+    if(showIcon == null){
+        showIcon=true;
+    }
+    if(background == null){
+        background=COLOR_BLUE;
+    }
+    if(tabs==null){
+        tabs = [
+            {
+                labelTab: "Home",
+                linkTab: "/",
+            },
+            {
+                labelTab: "Data",
+                linkTab: "/data",
+            },
+            {
+                labelTab: "Studies",
+                linkTab: "/studies"
+            }
+        ];
+    }
     return (
         <div className={classes.root}>
             <Grid container
                   justify="center">
-                <AppBar position="static" style={{'background': COLOR_BLUE}}>
+                <AppBar position="sticky" style={{'background': background}}>
                     <Toolbar variant="dense">
                         <DataStudiesTabs tabsInfo={tabs}/>
                         <div className={classes.toolbarButtons}>
-                            <DataStudiesIconButton name={nameIcons.USER} color={"white"}/>
+                            {showIcon && <DataStudiesIconButton name={nameIcons.USER} color={"inherit"} onClick={() => {
+                                window.location.href = '/not/implemented'
+                            }}/>}
                         </div>
                     </Toolbar>
                 </AppBar>
@@ -51,7 +64,9 @@ const DataStudiesAppBar = ({title}) => {
 }
 
 DataStudiesAppBar.propTypes = {
-    title: PropTypes.string
+    showIcon:PropTypes.bool,
+    tabs:PropTypes.any,
+    background:PropTypes.string,
 }
 
 export default DataStudiesAppBar
