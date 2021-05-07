@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom'
 import {Grid, ListItem, Typography} from "@material-ui/core";
 
 const DataStudiesObjectButton = ({name,path, date, description}) => {
+
     const history = useHistory()
 
     const onClickHandler = () => {
@@ -23,7 +24,7 @@ const DataStudiesObjectButton = ({name,path, date, description}) => {
                       spacing={2}
                       justify={"space-between"}>
                     <Grid item>
-                        <Typography gutterBottom={true} variant="subtitle1">
+                        <Typography gutterBottom={true} variant="h6">
                             {name}
                         </Typography>
                     </Grid>
@@ -34,7 +35,7 @@ const DataStudiesObjectButton = ({name,path, date, description}) => {
                     </Grid>
                 </Grid>
                 <Grid item>
-                    <Typography variant="body1" color="textSecondary">
+                    <Typography variant="body1" color={"textSecondary"}>
                         {description}
                     </Typography>
                 </Grid>

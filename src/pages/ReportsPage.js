@@ -41,10 +41,10 @@ const ReportsPage = () => {
                         </Typography>
                     </Grid>
                     <Grid item alignContent={"center"}>
-                        <Typography display={'inline'} variant={"h6"} color={"textSecondary"}>
+                        <Typography display={'inline'} variant={"h6"} style={{ color: "#585858" }}>
                             {`That form belongs to study `}
                         </Typography>
-                        <Typography display={'inline'} variant={"h6"} color={"textSecondary"}>
+                        <Typography display={'inline'} variant={"h6"} style={{ color: "#585858" }}>
                             <b>{path_array[path_array.length - 4]}</b>
                         </Typography>
                     </Grid>
