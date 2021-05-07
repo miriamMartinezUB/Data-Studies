@@ -1,52 +1,56 @@
 import React from 'react'
-import {Grid, List} from "@material-ui/core";
-import DataStudiesAppBar from "../components/AppBar";
+import {Grid, List, Paper, Typography} from "@material-ui/core";
 import {nameIcons} from "../constants/icons";
 import DataStudiesIconButton from "../components/IconButton";
 import DataStudiesData from "../components/Data";
-import 'typeface-roboto'
+import DataStudiesAppFrame from "../components/AppFrame";
+import {listData} from "../data/data";
+import {COLOR_GRAY} from "../constants/colors";
 
 const DataPage = () => {
-    const listData = [
-        {
-            name: "hola",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat massa metus, vitae dapibus massa lacinia vel. Aenean laoreet, sem et consectetur tempor, tellus sem luctus nisi, sed eleifend quam urna quis urna. Donec feugiat ullamcorper sollicitudin.",
-            columns: ["DataName", "Data1", "Data2", "Data3", "Data4"],
-            data: [['Name1', 159, 6.0, 24, 4.0],
-                ['Name2', 237, 9.0, 37, 4.3],
-                ['Name3', 262, 16.0, 24, 6.0],
-                ['Name4', 305, 3.7, 67, 4.3],
-                ['Name5', 356, 16.0, 49, 3.9]]
-        }
-    ]
     return (
-        <Grid container direction={"column"}>
-            <Grid item>
-                <DataStudiesAppBar/>
-            </Grid>
-            <Grid item justify="flex-start" direction="row-reverse">
-                <DataStudiesIconButton
-                    name={nameIcons.NEW}
-                    color={"primary"}
-                    size={"medium"}
-                    onClick={() => {
-                        window.location.href = '/not/implemented'
-                    }}
-                />
-            </Grid>
-            <Grid container item direction={"column"}>
-                <List>
-                    {listData.map(item => (
-                        <DataStudiesData
-                            name={item.name}
-                            description={item.description}
-                            columns={item.columns}
-                            data={item.data}
+        <DataStudiesAppFrame>
+            <Paper elevation={3} style={{margin: "20px"}}>
+                <Grid container item
+                      direction={"column"}
+                      style={{padding: "20px"}}>
+                    <Grid container item
+                          alignItems={"center"}
+                          direction={"row"}
+                          justify={"space-between"}
+                          style={{marginBottom: "20px"}}>
+                        <Grid>
+                            <Typography display={'inline'} variant={"h4"}>
+                                {`Data`}
+                            </Typography>
+                        </Grid>
+                        <DataStudiesIconButton
+                            name={nameIcons.UPLOAD}
+                            background={COLOR_GRAY}
+                            size={"small"}
+                            text={"Import"}
+                            onClick={() => {
+                                window.location.href = '/not/implemented'
+                            }}
                         />
-                    ))}
-                </List>
-            </Grid>
-        </Grid>
+                    </Grid>
+                    <Grid container item direction={"column"}>
+                        <List>
+                            {listData.map(item => (
+                                <DataStudiesData
+                                    name={item.name}
+                                    description={item.description}
+                                    columns={item.columns}
+                                    data={item.data}
+                                />
+                            ))}
+                        </List>
+                    </Grid>
+                </Grid>
+            </Paper>
+
+        </DataStudiesAppFrame>
+
     )
 }
 

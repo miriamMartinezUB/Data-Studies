@@ -20,17 +20,17 @@ const App = () => {
                 <Route path="/studies">
                     <StudiesPage/>
                 </Route>
-                <Route path="/study/:studyName">
-                    <StudyPage/>
-                </Route>
-                <Route path="/forms">
-                    <FormsPage/>
-                </Route>
-                <Route path="/form/:formName/reports">
+                <Route path="/study/:studyName/form/:formName/reports">
                     <ReportsPage/>
                 </Route>
-                <Route path="/form/:formName">
+                <Route path="/study/:studyName/form/:formName">
                     <FormPage/>
+                </Route>
+                <Route path="/study/:studyName/forms">
+                    <FormsPage/>
+                </Route>
+                <Route path="/study/:studyName">
+                    <StudyPage/>
                 </Route>
                 <Route path="/not/implemented">
                     <NotImplementedPage/>
