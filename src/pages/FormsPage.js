@@ -1,146 +1,131 @@
 import React from 'react'
-import {Grid, GridList, GridListTile, GridListTileBar, List} from "@material-ui/core";
-import DataStudiesAppBar from "../components/AppBar";
+import {Grid, GridList, GridListTile, GridListTileBar, List, Paper, Typography} from "@material-ui/core";
 import {nameIcons} from "../constants/icons";
 import DataStudiesIconButton from "../components/IconButton";
 import DataStudiesObjectButton from "../components/ObjectButton";
 import DataStudiesDialog from "../components/Dialog";
-import {useHistory} from "react-router-dom";
-import 'typeface-roboto'
+import {useHistory, useLocation} from "react-router-dom";
+import {listForms, listImages} from "../data/forms";
+import DataStudiesAppFrame from "../components/AppFrame";
+import {COLOR_GRAY, COLOR_LIGHT_BLUE} from "../constants/colors";
+import DataStudiesTabs from "../components/Tabs";
 
 const FormsPage = () => {
+    const location = useLocation();
+    let path_array = location.pathname.split("/");
     const [openModal, setOpenModal] = React.useState(false);
     const history = useHistory();
     const [disableModalButton, setDisableModalButton] = React.useState(true);
 
-    const listImages = [
+    const formsTabs = [
         {
-            link: "https://www.joantrave.com/gallery/template_blank.png",
-            title: "Blank template"
+            labelTab: "Documentation",
+            linkTab: "/not/implemented",
+            isSelected:false
         },
         {
-            link: "https://www.joantrave.com/gallery/template_one.png",
-            title: "Template One"
+            labelTab: "Forms",
+            linkTab: `/study/${path_array[path_array.length - 2]}/forms`,
+            isSelected:true
         },
         {
-            link: "https://www.joantrave.com/gallery/template_two.png",
-            title: "Template Two"
-        },
-        {
-            link: "https://www.joantrave.com/gallery/template_three.png",
-            title: "Template Three"
-        },
-        {
-            link: "https://www.joantrave.com/gallery/template_four.png",
-            title: "Template Four"
+            labelTab: "Add researcher",
+            linkTab: "/not/implemented",
+            isSelected:false
         }
-    ]
+    ];
 
-    const listForms = [
-        {
-            name: "hola",
-            date: "2021-03-05",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat massa metus, vitae dapibus massa lacinia vel. Aenean laoreet, sem et consectetur tempor, tellus sem luctus nisi, sed eleifend quam urna quis urna. Donec feugiat ullamcorper sollicitudin.",
-            type: "form"
-        },
-        {
-            name: "adeu",
-            date: "2021-03-05",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat massa metus, vitae dapibus massa lacinia vel. Aenean laoreet, sem et consectetur tempor, tellus sem luctus nisi, sed eleifend quam urna quis urna. Donec feugiat ullamcorper sollicitudin.",
-            type: "form"
-        },
-        {
-            name: "fins",
-            date: "2021-03-05",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat massa metus, vitae dapibus massa lacinia vel. Aenean laoreet, sem et consectetur tempor, tellus sem luctus nisi, sed eleifend quam urna quis urna. Donec feugiat ullamcorper sollicitudin.",
-            type: "form"
-        },
-        {
-            name: "aviat",
-            date: "2021-03-05",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat massa metus, vitae dapibus massa lacinia vel. Aenean laoreet, sem et consectetur tempor, tellus sem luctus nisi, sed eleifend quam urna quis urna. Donec feugiat ullamcorper sollicitudin.",
-            type: "form"
-        },
-        {
-            name: "vaig",
-            date: "2021-03-05",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat massa metus, vitae dapibus massa lacinia vel. Aenean laoreet, sem et consectetur tempor, tellus sem luctus nisi, sed eleifend quam urna quis urna. Donec feugiat ullamcorper sollicitudin.",
-            type: "form"
-        },
-        {
-            name: "a",
-            date: "2021-03-05",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat massa metus, vitae dapibus massa lacinia vel. Aenean laoreet, sem et consectetur tempor, tellus sem luctus nisi, sed eleifend quam urna quis urna. Donec feugiat ullamcorper sollicitudin.",
-            type: "form"
-        },
-        {
-            name: "ffhh",
-            date: "2021-03-05",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat massa metus, vitae dapibus massa lacinia vel. Aenean laoreet, sem et consectetur tempor, tellus sem luctus nisi, sed eleifend quam urna quis urna. Donec feugiat ullamcorper sollicitudin.",
-            type: "form"
-        },
-        {
-            name: "amorir",
-            date: "2021-03-05",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat massa metus, vitae dapibus massa lacinia vel. Aenean laoreet, sem et consectetur tempor, tellus sem luctus nisi, sed eleifend quam urna quis urna. Donec feugiat ullamcorper sollicitudin.",
-            type: "form"
-        }
-    ]
     return (
-        <Grid container direction={"column"}>
-            {openModal && <DataStudiesDialog title={"New form"}
-                               description={"Please choose template"}
-                               textButton={"Create"}
-                               children={
-                                   <GridList cellHeight={160} cols={2}>
-                                       {listImages.map(image => (
-                                           <GridListTile key={image.link} onClick={function (){}}>
-                                               <div className="trim" style={{maxHeight: "160px", overflow: "hidden"}}>
-                                                   <input
-                                                       type={"image"}
-                                                       src={image.link}
-                                                       alt={image.link}
-                                                       style={{maxWidth: "100%"}}
-                                                       onClick={function () {setDisableModalButton(false)}}
-                                                   />
-                                               </div>
-                                               <GridListTileBar
-                                                   title={image.title}
-                                               />
-                                           </GridListTile>
-                                       ))}
-                                   </GridList>
-                               }
-                             onClose={() => {
-                                 history.push(`/form/hola`);
-                             }}
-                             disableModal={disableModalButton}
-            />}
-            <Grid item>
-                <DataStudiesAppBar/>
+        <DataStudiesAppFrame>
+            <Grid container direction={"column"} alignItems={"center"}>
+                <Grid item style={{margin: "20px"}}>
+                    <Typography display={'inline'} variant={"h4"}>
+                        {`Manage study `}
+                    </Typography>
+                    <Typography display={'inline'} variant={"h4"}>
+                        <b>{path_array[path_array.length - 2]}</b>
+                    </Typography>
+                </Grid>
+                <Grid item justify="center" style={{display: "grid"}}>
+                    <DataStudiesTabs tabsInfo={formsTabs}/>
+                </Grid>
+                <Paper elevation={3} style={{marginLeft: "20px",marginRight: "20px",marginBottom: "20px"}}>
+                    <Grid container item
+                          direction={"column"}
+                          style={{padding: "20px"}}>
+                        <Grid container item
+                              alignItems={"center"}
+                              direction={"row"}
+                              justify={"space-between"}
+                              style={{marginBottom: "20px"}}>
+                            <Grid item>
+                                <Typography display={'inline'} variant={"h4"}>
+                                    {`My Forms`}
+                                </Typography>
+                            </Grid>
+                            <DataStudiesIconButton
+                                name={nameIcons.NEW}
+                                background={COLOR_GRAY}
+                                size={"small"}
+                                text={"New Form"}
+                                onClick={() => {
+                                    setOpenModal(true);
+                                }}
+                            />
+                        </Grid>
+                        <Grid container direction={"column"}>
+                            {openModal && <DataStudiesDialog title={"New form"}
+                                                             description={"Please choose template"}
+                                                             textButton={"Create"}
+                                                             children={
+                                                                 <GridList cellHeight={160} cols={2}>
+                                                                     {listImages.map(image => (
+                                                                         <GridListTile key={image.link}
+                                                                                       onClick={function () {
+                                                                                       }}>
+                                                                             <div className="trim"
+                                                                                  style={{
+                                                                                      maxHeight: "160px",
+                                                                                      overflow: "hidden"
+                                                                                  }}>
+                                                                                 <input
+                                                                                     type={"image"}
+                                                                                     src={image.link}
+                                                                                     alt={image.link}
+                                                                                     style={{maxWidth: "100%"}}
+                                                                                     onClick={function () {
+                                                                                         setDisableModalButton(false)
+                                                                                     }}
+                                                                                 />
+                                                                             </div>
+                                                                             <GridListTileBar
+                                                                                 title={image.title}
+                                                                             />
+                                                                         </GridListTile>
+                                                                     ))}
+                                                                 </GridList>
+                                                             }
+                                                             onClose={() => {
+                                                                 history.push(`/form/hola`);
+                                                             }}
+                                                             disableModal={disableModalButton}
+                            />}
+                            <Grid container item direction={"column"}>
+                                <List>
+                                    {listForms.map(item => (
+                                        <DataStudiesObjectButton
+                                            path={`/study/${path_array[path_array.length - 2]}/form/${item.name}`}
+                                            name={item.name}
+                                            date={item.date}
+                                            description={item.description}/>
+                                    ))}
+                                </List>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Paper>
             </Grid>
-            <Grid item justify="flex-start" direction="row-reverse">
-                <DataStudiesIconButton
-                    name={nameIcons.NEW}
-                    color={"primary"}
-                    size={"medium"}
-                    onClick={() => {
-                        setOpenModal(true);
-                    }}
-                />
-            </Grid>
-            <Grid container item direction={"column"}>
-                <List>
-                    {listForms.map(item => (
-                        <DataStudiesObjectButton name={item.name}
-                                                 date={item.date}
-                                                 description={item.description}
-                                                 type={item.type}
-                        />
-                    ))}
-                </List>
-            </Grid>
-        </Grid>
+        </DataStudiesAppFrame>
     )
 };
 

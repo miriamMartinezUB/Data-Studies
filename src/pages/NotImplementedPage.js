@@ -3,8 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import Link from '@material-ui/core/Link'
 import { Link as RouterLink } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
-import DataStudiesIconButton from "../components/IconButton";
-import {nameIcons} from "../constants/icons";
+import {iconsByName} from "../constants/icons";
 import 'typeface-roboto'
 
 const NotImplementedPage = () => {
@@ -12,13 +11,14 @@ const NotImplementedPage = () => {
         <Grid container
               direction="column"
               justify="center"
+              style={{margin:"20px"}}
               className="full">
             <div className="highlight">
                 <Grid item container xs={12}
                       justify="center"
                       alignItems="center">
                     <Grid item>
-                        <DataStudiesIconButton name={nameIcons.SAD} color={"disabled"} isDisabled={true} />
+                        {iconsByName.sad}
                     </Grid>
                     <Grid item
                           container
