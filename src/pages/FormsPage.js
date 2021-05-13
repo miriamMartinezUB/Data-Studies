@@ -9,7 +9,7 @@ import DataStudiesTextArea from "../components/TextArea";
 import {useHistory, useLocation} from "react-router-dom";
 import {listForms, listImages} from "../data/forms";
 import DataStudiesAppFrame from "../components/AppFrame";
-import {COLOR_GRAY, COLOR_LIGHT_BLUE} from "../constants/colors";
+import {COLOR_BLUE, COLOR_DARK_GRAY, COLOR_GRAY, COLOR_LIGHT_BLUE} from "../constants/colors";
 import DataStudiesTabs from "../components/Tabs";
 
 const FormsPage = () => {
@@ -18,6 +18,8 @@ const FormsPage = () => {
     const [openModal, setOpenModal] = React.useState(false);
     const history = useHistory();
     const [disableModalButton, setDisableModalButton] = React.useState(true);
+    const [titleFilled, setTitleFilled] = React.useState(false);
+    const [selectedTemplate, setSelectedTemplate] = React.useState(null);
     const newFormName = useRef('')
 
     const formsTabs = [
@@ -51,6 +53,11 @@ const FormsPage = () => {
                                            label="New form name"
                                           variant="outlined"
                                            inputRef={newFormName}
+                                           onChange={() => {
+                                               if (newFormName) {
+                                                   setTitleFilled(true);
+                                               }
+                                           }}
                                        />
                                        <DataStudiesTextArea
                                            defaultMessage={"New form description"}
@@ -68,11 +75,17 @@ const FormsPage = () => {
                                                            src={image.link}
                                                            alt={image.link}
                                                            style={{maxWidth: "100%"}}
-                                                           onClick={function () {setDisableModalButton(false)}}
+                                                           onClick={() => {
+                                                               setSelectedTemplate(image.link)
+                                                               setDisableModalButton(false);
+                                                           }}
                                                        />
                                                    </div>
                                                    <GridListTileBar
                                                        title={image.title}
+                                                       style={{
+                                                           backgroundColor: (selectedTemplate == image.link) ? COLOR_BLUE : COLOR_DARK_GRAY
+                                                       }}
                                                    />
                                                </GridListTile>
                                            ))}
@@ -86,7 +99,7 @@ const FormsPage = () => {
                                  setOpenModal(false);
                                  setDisableModalButton(true);
                              }}
-                             disableModal={disableModalButton}
+                             disableModal={disableModalButton || !titleFilled}
             />}
         <DataStudiesAppFrame>
             <Grid container direction={"column"} alignItems={"center"}>
